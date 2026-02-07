@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #f0f0f0;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .thumbnail-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .thumbnail-card img {
+      object-fit: contain !important;
+    }
+
+    .thumbnail-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .thumbnail-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      display: block;
+    }
+
+    .thumbnail-card .caption {
+      padding: 8px;
+      font-size: 14px;
+      text-align: center;
+      color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="grid-container">
+    <!-- Manually add image tags or use a build script to populate these -->
+    <script>
+      const container = document.querySelector('.grid-container');
+      let html = '';
+      for (let i = 1; i <= 4846; i++) {
+        html += `
+            <div class="thumbnail-card">
+                <img src="http://192.168.100.163:8082/scene_imgs/${i}_thumbnail.png" alt="Thumbnail ${i}" loading="lazy">
+            </div>`;
+      }
+      container.insertAdjacentHTML('afterbegin', html);
+    </script>
+  </div>
+
+</body>
+
+</html>
